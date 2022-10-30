@@ -1,14 +1,13 @@
 import "./App.css";
-// import CardWithGreeting from "./CardWithGreeting";
-// import FormGreet from "./FormGreet";
 import Welcome from "./pages/Welcome";
 import Chat from "./pages/Chat";
 import { Route, Routes, Navigate } from "react-router-dom";
 import MainHeader from "./components/MainHeader";
+import UserProvider from "./providers/User";
 
 function App() {
   return (
-    <div>
+    <UserProvider>
       <MainHeader />
       <main>
         <Routes>
@@ -18,7 +17,7 @@ function App() {
           <Route path="*" element={<Navigate to="/welcome" />} />
         </Routes>
       </main>
-    </div>
+      </UserProvider>
   );
 }
 

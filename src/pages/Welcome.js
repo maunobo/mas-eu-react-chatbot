@@ -1,24 +1,25 @@
-import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
+import React, { useCallback, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../providers/User";
 
 const Welcome = () => {
+  const { setUserName } = useContext(UserContext);
+  const navigate = useNavigate();
   const [name, setName] = useState("");
 
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-  };
+  const handleNameChange = useCallback(({ target }) => {
+    setName(target.value);
+  }, []);
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      console.log("enter key pressed");
-    }
-  };
+  const onSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
 
-  function GreetUser(name) {
-    // function GreetUser(name) {
-    // <Navigate to="/chat" state={{ data: name }} />
-    <Navigate to="/chat" state={{ data: "name" }} />;
-  }
+      setUserName(name);
+      navigate("/chat", { replace: true }); // replace route so as not to go back. Otherwise remove options obj
+    },
+    [navigate, setUserName, name]
+  ); // no actual need adding setUserName & navigate
 
   const buttonStyle = {};
   buttonStyle.marginLeft = "auto";
@@ -29,7 +30,7 @@ const Welcome = () => {
     <div className="card">
       <div className="card-body">
         <h5 className="card-title">Greet User</h5>
-        <div className="card-text">
+        <form onSubmit={onSubmit} className="card-text">
           <input
             type="text"
             className="form-control"
@@ -37,15 +38,10 @@ const Welcome = () => {
             value={name}
             onChange={handleNameChange}
           />
-          <button
-            className="btn btn-primary"
-            style={buttonStyle}
-            onClick={() => GreetUser(name)}
-            onKeyDown={handleKeyDown}
-          >
+          <button className="btn btn-primary" style={buttonStyle}>
             Submit Name
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );
