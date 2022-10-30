@@ -28,21 +28,36 @@ const theme = {
   botBubbleColor: botColor,
   botFontColor: "#fff",
   userBubbleColor: userColor,
-  userFontColor: "#4a4a4a",
+  userFontColor: "#fff",
   marginTop: "2rem"
 };
 
 const getFirstSteps = (userName = 'DummyUser') => [
-  {
-    id: "1",
-    message: `Hello ${userName}!`,
-    end: true,
-  },
-  {
-    id: "2",
-    message: `How can I help you today ${userName}?`,
-    end: true,
-  },
+    {
+      id: "1",
+      message: `Hello ${userName}!`,
+      trigger: "2",
+    },
+    {
+      id: "2",
+      user: true,
+      trigger: "3",
+    },
+    {
+      id: "3",
+      message: `How can I help you today ${userName}?`,
+      trigger: "4",
+    },
+    {
+      id: "4",
+      user: true,
+      trigger: "5",
+    },
+    {
+      id: "5",
+      message: "NO can do! Bye!",
+      end: true,
+    }
 ];
 
 const Chat = () => {
