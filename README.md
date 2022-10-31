@@ -1,6 +1,12 @@
 ### MAS EU Chatbot
 
-In the project directory, you can run:
+In the project directory, first install the dependencies.
+
+### `npm install`
+
+Some legacy dependencies might be needed to be installed in order for this to work.
+
+After that you can run the app locally:
 
 ### `npm start`
 
