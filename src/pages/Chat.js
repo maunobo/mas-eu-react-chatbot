@@ -4,7 +4,6 @@ import classes from "./Chat.module.css";
 import { ThemeProvider } from "styled-components";
 import { UserContext } from "../providers/User";
 
-//red, green, blue, purple, pink
 let botColor;
 let userColor;
 
@@ -29,7 +28,6 @@ const theme = {
   botFontColor: "#fff",
   userBubbleColor: userColor,
   userFontColor: "#fff",
-  marginTop: "2rem"
 };
 
 const getFirstSteps = (userName = 'DummyUser') => [
@@ -65,7 +63,7 @@ const Chat = () => {
   const steps = getFirstSteps(userName);
 
   return (
-    <div className={classes.contain}>
+    <div className={classes.chatContainer}>
       <ThemeProvider theme={theme}>
         <ChatBot steps={steps} />
       </ThemeProvider>

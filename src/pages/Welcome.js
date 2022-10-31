@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../providers/User";
-import "./Welcome.css";
+import classes from "./Welcome.module.css";
 
 const Welcome = () => {
   const { setUserName } = useContext(UserContext);
@@ -27,7 +27,7 @@ const Welcome = () => {
   );
 
   return (
-    <div className="form-box">
+    <div className={classes.formBox}>
       <form onSubmit={onSubmit} className="card-text">
         <div>
           <label>Enter your name to proceed to the chatbot</label>

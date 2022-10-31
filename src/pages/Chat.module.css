@@ -1,11 +1,11 @@
-.contain {
-    margin: 0;
-    background: linear-gradient(-45deg, #002b2f, #004e56, #457e84, #b9ced0);
-    /* background-size: 400% 400%; */
+.chatContainer {
+    /* margin: 0; */
     animation: Gradient 100s ease infinite;
     display: flex;
     justify-content: center;
     align-items: center;
     align-content: center;
     font-family: "source-sans-pro", Helvetica, sans-serif;
+    margin-top: 2em;
+    margin-bottom: 2em;
   }
