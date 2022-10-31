@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../providers/User";
+import "./Welcome.css";
 
 const Welcome = () => {
   const { setUserName } = useContext(UserContext);
@@ -16,21 +17,16 @@ const Welcome = () => {
       e.preventDefault();
 
       setUserName(name);
-      navigate("/chat", { replace: true }); // replace route so as not to go back. Otherwise remove options obj
+      navigate("/chat", { replace: true });
     },
     [navigate, setUserName, name]
-  ); // no actual need adding setUserName & navigate
-
-  const buttonStyle = {};
-  buttonStyle.marginLeft = "auto";
-  buttonStyle.marginRight = "auto";
-  buttonStyle.display = "block";
+  );
 
   return (
-    <div className="card">
-      <div className="card-body">
-        <h5 className="card-title">Greet User</h5>
-        <form onSubmit={onSubmit} className="card-text">
+    <div className="form-box">
+      <form onSubmit={onSubmit} className="card-text">
+        <div>
+          <label>Enter your name to proceed to the chatbot</label>
           <input
             type="text"
             className="form-control"
@@ -38,11 +34,11 @@ const Welcome = () => {
             value={name}
             onChange={handleNameChange}
           />
-          <button className="btn btn-primary" style={buttonStyle}>
-            Submit Name
-          </button>
-        </form>
-      </div>
+        </div>
+        <button className="btn btn-primary">
+          Submit Name
+        </button>
+      </form>
     </div>
   );
 };
