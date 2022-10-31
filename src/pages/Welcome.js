@@ -16,8 +16,12 @@ const Welcome = () => {
     (e) => {
       e.preventDefault();
 
-      setUserName(name);
-      navigate("/chat", { replace: true });
+      if (name.trim().length !== 0) {
+        setUserName(name);
+        navigate("/chat", { replace: true });
+      } else {
+        alert("Please enter a name");
+      }
     },
     [navigate, setUserName, name]
   );
@@ -35,9 +39,7 @@ const Welcome = () => {
             onChange={handleNameChange}
           />
         </div>
-        <button className="btn btn-primary">
-          Submit Name
-        </button>
+        <button className="btn btn-primary">Submit Name</button>
       </form>
     </div>
   );
